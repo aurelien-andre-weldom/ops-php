@@ -1,0 +1,85 @@
+FROM {{ env.from }}
+
+USER root
+
+RUN set -eux; \
+apt-get update \
+&& wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
+&& echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+
+RUN set -eux; \
+apt-get update \
+&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+php{{ env.version }} \
+php{{ env.version }}-cli \
+{{ if env.variant == "fpm" then ( -}}
+php{{ env.version }}-fpm \
+{{ ) else "" end -}}
+php{{ env.version }}-common \
+php{{ env.version }}-bcmath \
+php{{ env.version }}-opcache \
+php{{ env.version }}-apcu \
+php{{ env.version }}-amqp \
+php{{ env.version }}-xdebug \
+php{{ env.version }}-redis \
+php{{ env.version }}-curl \
+php{{ env.version }}-soap \
+php{{ env.version }}-mbstring \
+php{{ env.version }}-mysql \
+php{{ env.version }}-xml \
+php{{ env.version }}-xsl \
+php{{ env.version }}-gd \
+php{{ env.version }}-intl \
+php{{ env.version }}-iconv \
+php{{ env.version }}-ftp \
+php{{ env.version }}-zip
+
+RUN set -eux; \
+ln -sf \
+/etc/php/{{ env.version }}/90-php.ini \
+/etc/php/{{ env.version }}/cli/conf.d/90-php.ini
+
+{{ if env.variant == "fpm" then ( -}}
+RUN set -eux; \
+ln -sf \
+/etc/php/{{ env.version }}/90-php.ini \
+/etc/php/{{ env.version }}/fpm/conf.d/90-php.ini
+{{ ) else "" end -}}
+
+RUN set -eux; \
+mkdir -p \
+/etc/php \
+/bin; \
+chmod 777 -R \
+/etc/php \
+/bin; \
+chown rootless:rootless \
+/etc/php \
+/bin
+
+COPY --chown=rootless:rootless system .
+
+RUN set -eux; \
+chmod +x /usr/bin/docker-*; \
+chmod +x /usr/bin/php*
+
+RUN set -eux; \
+echo "docker-entrypoint-php" >> /docker-entrypoint.list
+
+{{ if env.variant == "fpm" then ( -}}
+RUN set -eux; \
+echo "docker-entrypoint-php-fpm.sh" >> /docker-entrypoint.list
+{{ ) else "" end -}}
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+STOPSIGNAL SIGQUIT
+
+EXPOSE 9001
+{{ if env.variant == "fpm" then ( -}}
+EXPOSE 9000
+{{ ) else "" end -}}
+
+CMD ["supervisord"]
+
+USER rootless
