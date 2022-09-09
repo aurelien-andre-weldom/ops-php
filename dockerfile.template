@@ -108,7 +108,10 @@ ln -sf \
 RUN set -eux; \
 ln -sf \
 /etc/php/{{ env.version }}/90-php.ini \
-/etc/php/{{ env.version }}/fpm/conf.d/90-php.ini
+/etc/php/{{ env.version }}/fpm/conf.d/90-php.ini; \
+ln -sf \
+/usr/sbin/php-fpm{{ env.version }} \
+/usr/sbin/php-fpm
 {{ ) else "" end -}}
 
 RUN set -eux; \
