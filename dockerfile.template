@@ -102,14 +102,14 @@ php{{ env.version }}-zip
 
 RUN set -eux; \
 ln -sf \
-/etc/php/{{ env.version }}/90-php.ini \
-/etc/php/{{ env.version }}/cli/conf.d/90-php.ini
+/etc/php/{{ env.version }}/99-php.ini \
+/etc/php/{{ env.version }}/cli/conf.d/99-php.ini
 
 {{ if env.variant == "fpm" then ( -}}
 RUN set -eux; \
 ln -sf \
-/etc/php/{{ env.version }}/90-php.ini \
-/etc/php/{{ env.version }}/fpm/conf.d/90-php.ini; \
+/etc/php/{{ env.version }}/99-php.ini \
+/etc/php/{{ env.version }}/fpm/conf.d/99-php.ini; \
 ln -sf \
 /usr/sbin/php-fpm{{ env.version }} \
 /usr/sbin/php-fpm
@@ -136,7 +136,7 @@ chmod +x /usr/bin/docker-*; \
 chmod +x /usr/bin/php*
 
 RUN set -eux; \
-echo "docker-entrypoint-php" >> /docker-entrypoint.list
+echo "docker-entrypoint-php.sh" >> /docker-entrypoint.list
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

@@ -92,8 +92,8 @@ php8.1-zip
 
 RUN set -eux; \
 ln -sf \
-/etc/php/8.1/90-php.ini \
-/etc/php/8.1/cli/conf.d/90-php.ini
+/etc/php/8.1/99-php.ini \
+/etc/php/8.1/cli/conf.d/99-php.ini
 
 
 RUN set -eux; \
@@ -117,7 +117,7 @@ chmod +x /usr/bin/docker-*; \
 chmod +x /usr/bin/php*
 
 RUN set -eux; \
-echo "docker-entrypoint-php" >> /docker-entrypoint.list
+echo "docker-entrypoint-php.sh" >> /docker-entrypoint.list
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

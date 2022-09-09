@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ ! -s "/etc/php/version/90-php.ini" ]; then
+if [ ! -s "/etc/php/version/99-php.ini" ]; then
 
   for e in "${!PHP_@}"; do
 
@@ -9,7 +9,7 @@ if [ ! -s "/etc/php/version/90-php.ini" ]; then
 
     VALUE=$(printf '${%s}' "$e")
 
-    echo "$VARIABLE=$VALUE" >> "/etc/php/version/90-php.ini"
+    echo "$VARIABLE=$VALUE" >> "/etc/php/version/99-php.ini"
 
   done
 
