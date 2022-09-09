@@ -129,9 +129,6 @@ chmod +x /usr/bin/php*
 RUN set -eux; \
 echo "docker-entrypoint-php" >> /docker-entrypoint.list
 
-RUN set -eux; \
-echo "docker-entrypoint-php-fpm.sh" >> /docker-entrypoint.list
-
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 STOPSIGNAL SIGQUIT
