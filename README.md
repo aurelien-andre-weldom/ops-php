@@ -114,7 +114,7 @@ FPM_PM_MAX_REQUESTS="500"
 CLI
 
 ```shell
-docker run -it --rm \--name ops-php ops-php/php:cli-latest php --version
+docker run -it --rm --name ops-php ops-php/php:cli-latest php --version
 ```
 
 FPM

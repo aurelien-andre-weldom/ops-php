@@ -123,7 +123,6 @@ mkdir -p \
 /var/lock\opcache; \
 chmod 777 -R \
 /etc/php \
-/var/lock \
 /var/log\opcache \
 /var/lock\opcache; \
 chown rootless:rootless \
