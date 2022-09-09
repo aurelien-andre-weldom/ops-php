@@ -3,14 +3,13 @@ FROM {{ env.from }}
 USER root
 
 RUN set -eux; \
-apt-get update \
-&& wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
-&& echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+apt-get update; \
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg; \
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 
 RUN set -eux; \
 apt-get update \
 && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-php{{ env.version }} \
 php{{ env.version }}-cli \
 {{ if env.variant == "fpm" then ( -}}
 php{{ env.version }}-fpm \
@@ -30,7 +29,6 @@ php{{ env.version }}-xml \
 php{{ env.version }}-xsl \
 php{{ env.version }}-gd \
 php{{ env.version }}-intl \
-php{{ env.version }}-iconv \
 php{{ env.version }}-ftp \
 php{{ env.version }}-zip
 

@@ -5,19 +5,18 @@
 #
 # @see https://github.com/aurelien-andre-weldom/ops-php
 #
-FROM ops-linux/debian:100.0.0-bullseye
+FROM ops-debian/debian:100.0.0-bullseye
 
 USER root
 
 RUN set -eux; \
-apt-get update \
-&& wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
-&& echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+apt-get update; \
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg; \
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 
 RUN set -eux; \
 apt-get update \
 && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-php8.1 \
 php8.1-cli \
 php8.1-common \
 php8.1-bcmath \
@@ -34,7 +33,6 @@ php8.1-xml \
 php8.1-xsl \
 php8.1-gd \
 php8.1-intl \
-php8.1-iconv \
 php8.1-ftp \
 php8.1-zip
 

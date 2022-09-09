@@ -2,7 +2,7 @@
 
 Create your php templates in an automated way 
 
-@depends : https://github.com/aurelien-andre-weldom/ops-linux
+@depends : https://github.com/aurelien-andre-weldom/ops-debian
 
 ### Terraform Versions
 
@@ -12,29 +12,13 @@ Create your php templates in an automated way
     "variants": [
       "100.0.1-bullseye/cli",
       "100.0.1-bullseye/fpm",
-      "100.0.1-buster/cli",
-      "100.0.1-buster/fpm",
       "100.0.0-bullseye/cli",
-      "100.0.0-bullseye/fpm",
-      "100.0.0-buster/cli",
-      "100.0.0-buster/fpm"
+      "100.0.0-bullseye/fpm"
     ],
     "version": "8.1"
-  },
-  "7.4": {
-    "variants": [
-      "100.0.1-bullseye/cli",
-      "100.0.1-bullseye/fpm",
-      "100.0.1-buster/cli",
-      "100.0.1-buster/fpm",
-      "100.0.0-bullseye/cli",
-      "100.0.0-bullseye/fpm",
-      "100.0.0-buster/cli",
-      "100.0.0-buster/fpm"
-    ],
-    "version": "7.4"
   }
 }
+
 ```
 
 ### Requirements
