@@ -43,6 +43,18 @@ for version; do
 
     docker build . -t "ops-php/php:$version-$suite-$variant" >/dev/null
 
+    if [ "$MASTER_VERSION" = "$version" ] && [ "$MASTER_SUITE" = "$suite" ]; then
+
+      echo "build ops-php/php:$version-$variant ..."
+
+      docker build . -t "ops-php/php:$version-$variant" >/dev/null
+
+      echo "build ops-php/php:$variant-latest ..."
+
+      docker build . -t "ops-php/php:$variant-latest" >/dev/null
+
+    fi
+
   done
 
 done
