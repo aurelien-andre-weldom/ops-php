@@ -1,16 +1,20 @@
 #!/bin/bash
 set -e
 
-if [ ! -s "/etc/php/version/99-php.ini" ]; then
+files="
+/etc/php/version/99-php.ini
+"
 
-  for e in "${!PHP_@}"; do
+for file in $files; do
 
-    VARIABLE=$(echo "$e" | sed -e 's/PHP_/''/g' | sed -e 's/__/'.'/g' | awk '{print tolower($0)}')
+  if [ -f "$file" ]; then
 
-    VALUE=$(printf '${%s}' "$e")
+    for e in "${!PHP_@}"; do
 
-    echo "$VARIABLE=$VALUE" >> "/etc/php/version/99-php.ini"
+        sed -i -e 's!__'"$e"'__!'"$(printenv "$e")"'!g' "$file"
 
-  done
+    done
 
-fi
+  fi
+
+done
