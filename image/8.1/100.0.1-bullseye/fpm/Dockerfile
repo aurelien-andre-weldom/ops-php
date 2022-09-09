@@ -114,11 +114,18 @@ ln -sf \
 
 RUN set -eux; \
 mkdir -p \
-/etc/php; \
+/etc/php \
+/var/log\opcache \
+/var/lock\opcache; \
 chmod 777 -R \
-/etc/php; \
+/etc/php \
+/var/lock \
+/var/log\opcache \
+/var/lock\opcache; \
 chown rootless:rootless \
-/etc/php
+/etc/php \
+/var/log\opcache \
+/var/lock\opcache
 
 COPY --chown=rootless:rootless system .
 
