@@ -62,13 +62,14 @@ PHP_OPCACHE__JIT_BUFFER_SIZE="400MB"
 ENV \
 FPM_PID="/var/pid/php8.1-fpm.pid" \
 FPM_LISTENER="/var/run/php8.1-fpm.sock" \
+FPM_INCLUDE="/etc/php/8.1/fpm/pool.d/*.conf" \
 FPM_ERROR_LOG="/proc/self/fd/1" \
 FPM_PM="ondemand" \
 FPM_PM_MAX_CHILDREN="5" \
 FPM_PM_START_SERVERS="2" \
 FPM_PM_MIN_SPARE_SERVERS="1" \
 FPM_PM_MAX_SPARE_SERVERS="3" \
-FPM_PM_PROCESS_IDLE_TIMEOUT="10s;" \
+FPM_PM_PROCESS_IDLE_TIMEOUT="10s" \
 FPM_PM_MAX_REQUESTS="500"
 
 USER root
