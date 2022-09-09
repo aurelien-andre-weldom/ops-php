@@ -48,7 +48,9 @@ bash run-build.sh
 memory_limit = __PHP_MEMORY_LIMIT__
 ```
 
-Config env vars "PHP_MEMORY_LIMIT=4G"
+```dotenv
+PHP_MEMORY_LIMIT=4G
+```
 
 **FPM** 
 
