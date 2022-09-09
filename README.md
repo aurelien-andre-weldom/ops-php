@@ -41,13 +41,18 @@ bash run-build.sh
 
 ### Env Configuration
 
-FPM 
+**PHP**
+
+```ini
+# cat /etc/php/{{ env.version }}/99-php.ini
+memory_limit = __PHP_MEMORY_LIMIT__
+```
+
+Config env vars "PHP_MEMORY_LIMIT=4G"
+
+**FPM** 
 
 ```dotenv
-FPM_PID="/var/pid/php{{ env.version }}-fpm.pid"
-FPM_LISTENER="/var/run/php{{ env.version }}-fpm.sock"
-FPM_INCLUDE="/etc/php/{{ env.version }}/fpm/pool.d/*.conf"
-FPM_ERROR_LOG="/proc/self/fd/1"
 FPM_PM="ondemand"
 FPM_PM_MAX_CHILDREN="5"
 FPM_PM_START_SERVERS="2"
