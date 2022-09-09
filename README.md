@@ -43,13 +43,13 @@ bash run-build.sh
 
 **PHP**
 
+```dotenv
+PHP_MEMORY_LIMIT=4G
+```
+
 ```ini
 # cat /etc/php/{{ env.version }}/99-php.ini
 memory_limit = __PHP_MEMORY_LIMIT__
-```
-
-```dotenv
-PHP_MEMORY_LIMIT=4G
 ```
 
 **FPM** 
