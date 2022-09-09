@@ -97,8 +97,8 @@ FPM
 
 ```dotenv
 FPM_PID="/var/pid/php{{ env.version }}-fpm.pid"
-FPM_ERROR_LOG="/proc/self/fd/1"
 FPM_LISTENER="/var/run/php{{ env.version }}-fpm.sock"
+FPM_ERROR_LOG="/proc/self/fd/1"
 FPM_PM="ondemand"
 FPM_PM_MAX_CHILDREN="5"
 FPM_PM_START_SERVERS="2"

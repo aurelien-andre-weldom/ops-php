@@ -61,8 +61,8 @@ PHP_OPCACHE__JIT_BUFFER_SIZE="400MB"
 
 ENV \
 FPM_PID="/var/pid/php8.1-fpm.pid" \
-FPM_ERROR_LOG="/proc/self/fd/1" \
 FPM_LISTENER="/var/run/php8.1-fpm.sock" \
+FPM_ERROR_LOG="/proc/self/fd/1" \
 FPM_PM="ondemand" \
 FPM_PM_MAX_CHILDREN="5" \
 FPM_PM_START_SERVERS="2" \
