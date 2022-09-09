@@ -1,20 +1,16 @@
 #!/bin/bash
 set -e
 
-files="
-/etc/supervisor/supervisord.conf
-"
+if [ ! -s "/etc/php/version/90-php.ini" ]; then
 
-for file in $files; do
+  for e in "${!PHP_@}"; do
 
-  if [ -f "$file" ]; then
+    VARIABLE=$(echo "$e" | sed -e 's/PHP_/''/g' | sed -e 's/__/'.'/g' | awk '{print tolower($0)}')
 
-    for e in "${!SUPERVISOR_@}"; do
+    VALUE=$(printf '${%s}' "$e")
 
-        sed -i -e 's!__'"$e"'__!'"$(printenv "$e")"'!g' "$file"
+    echo "$VARIABLE=$VALUE" >> "/etc/php/version/90-php.ini"
 
-    done
+  done
 
-  fi
-
-done
+fi
