@@ -1,9 +1,9 @@
 FROM {{ env.from }}
 
 ENV \
-VERSION="{{ env.version }}" \
-SUITE="{{ env.suite }}" \
-VARIANT="{{ env.variant }}"
+PHP_VERSION="{{ env.version }}" \
+PHP_SUITE="{{ env.suite }}" \
+PHP_VARIANT="{{ env.variant }}"
 
 {{ if env.variant == "fpm" then ( -}}
 ENV \

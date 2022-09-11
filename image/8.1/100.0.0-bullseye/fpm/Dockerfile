@@ -8,9 +8,9 @@
 FROM ops-debian/debian:100.0.0-bullseye
 
 ENV \
-VERSION="8.1" \
-SUITE="100.0.0-bullseye" \
-VARIANT="fpm"
+PHP_VERSION="8.1" \
+PHP_SUITE="100.0.0-bullseye" \
+PHP_VARIANT="fpm"
 
 ENV \
 FPM_PID="/var/pid/php8.1-fpm.pid" \

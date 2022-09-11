@@ -2,7 +2,7 @@
 set -e
 
 files="
-/etc/php/version/99-php.ini
+/etc/php/$PHP_VERSION/99-php.ini
 "
 
 for file in $files; do
