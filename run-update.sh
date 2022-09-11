@@ -68,8 +68,6 @@ for version; do
 
     cp -a system/usr/bin/* "image/$version/$suite/$variant/system/usr/bin"
 
-    sed -i -e 's!version!'"$version"'!g' "image/$version/$suite/$variant/system/usr/bin/docker-entrypoint-php.sh"
-
     if [ "$variant" == "cli" ]; then
 
       rm -rf "image/$version/$suite/$variant/system/etc/php/$version/fpm"
