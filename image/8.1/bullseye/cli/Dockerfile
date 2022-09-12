@@ -5,25 +5,13 @@
 #
 # @see https://github.com/aurelien-andre-weldom/ops-php
 #
-FROM ops-debian/debian:100.0.0-bullseye
+FROM ops-debian/debian:bullseye-slim
 
 ENV \
 PHP_VERSION="8.1" \
-PHP_SUITE="100.0.0-bullseye" \
-PHP_VARIANT="fpm"
+PHP_SUITE="bullseye" \
+PHP_VARIANT="cli"
 
-ENV \
-FPM_PID="/var/pid/php8.1-fpm.pid" \
-FPM_LISTENER="/var/run/php8.1-fpm.sock" \
-FPM_INCLUDE="/etc/php/8.1/fpm/pool.d/*.conf" \
-FPM_ERROR_LOG="/proc/self/fd/1" \
-FPM_PM="ondemand" \
-FPM_PM_MAX_CHILDREN="5" \
-FPM_PM_START_SERVERS="2" \
-FPM_PM_MIN_SPARE_SERVERS="1" \
-FPM_PM_MAX_SPARE_SERVERS="3" \
-FPM_PM_PROCESS_IDLE_TIMEOUT="10s" \
-FPM_PM_MAX_REQUESTS="500"
 
 USER root
 
@@ -36,7 +24,6 @@ RUN set -eux; \
 apt-get update \
 && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 php8.1-cli \
-php8.1-fpm \
 php8.1-common \
 php8.1-bcmath \
 php8.1-opcache \
@@ -61,13 +48,6 @@ ln -sf \
 /etc/php/8.1/99-php.ini \
 /etc/php/8.1/cli/conf.d/99-php.ini
 
-RUN set -eux; \
-ln -sf \
-/etc/php/8.1/99-php.ini \
-/etc/php/8.1/fpm/conf.d/99-php.ini; \
-ln -sf \
-/usr/sbin/php-fpm8.1 \
-/usr/sbin/php-fpm
 
 RUN set -eux; \
 mkdir -p \
@@ -97,7 +77,6 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 STOPSIGNAL SIGQUIT
 
 EXPOSE 9001
-EXPOSE 9000
 
 CMD ["supervisord"]
 

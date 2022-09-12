@@ -1,10 +1,10 @@
 {
   "8.1": {
     "variants": [
-      "100.0.1-bullseye/cli",
-      "100.0.1-bullseye/fpm",
-      "100.0.0-bullseye/cli",
-      "100.0.0-bullseye/fpm"
+      "bullseye/cli",
+      "bullseye/fpm",
+      "buster/cli",
+      "buster/fpm"
     ],
     "version": "8.1"
   }

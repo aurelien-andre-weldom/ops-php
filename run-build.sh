@@ -1,10 +1,6 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-[ -n "${MASTER_VERSION}" ]
-
-[ -n "${MASTER_SUITE}" ]
-
 # wget -qO ".jq-template.awk" 'https://github.com/docker-library/bashbrew/raw/9f6a35772ac863a0241f147c820354e4008edf38/scripts/jq-template.awk'
 
 [ -f versions.json ] # run "versions.sh" first
@@ -42,18 +38,6 @@ for version; do
     echo "build ops-php/php:$version-$suite-$variant ..."
 
     docker build . -t "ops-php/php:$version-$suite-$variant" >/dev/null
-
-    if [ "$MASTER_VERSION" = "$version" ] && [ "$MASTER_SUITE" = "$suite" ]; then
-
-      echo "build ops-php/php:$version-$variant ..."
-
-      docker build . -t "ops-php/php:$version-$variant" >/dev/null
-
-      echo "build ops-php/php:$variant-latest ..."
-
-      docker build . -t "ops-php/php:$variant-latest" >/dev/null
-
-    fi
 
   done
 

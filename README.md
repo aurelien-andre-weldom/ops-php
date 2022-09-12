@@ -10,10 +10,10 @@ Create your php templates in an automated way
 {
   "8.1": {
     "variants": [
-      "100.0.1-bullseye/cli",
-      "100.0.1-bullseye/fpm",
-      "100.0.0-bullseye/cli",
-      "100.0.0-bullseye/fpm"
+      "bullseye/cli",
+      "bullseye/fpm",
+      "buster/cli",
+      "buster/fpm"
     ],
     "version": "8.1"
   }
@@ -27,15 +27,11 @@ Edit dockerfile.template
 
 ```shell
 # Update all versions
-MASTER_VERSION=8.1 \
-MASTER_SUITE=100.0.1-bullseye \
 bash run-update.sh
 ```
 
 ```shell
 # Build all docker images
-MASTER_VERSION=8.1 \
-MASTER_SUITE=100.0.1-bullseye \
 bash run-build.sh
 ```
 
@@ -69,13 +65,13 @@ FPM_PM_MAX_REQUESTS="500"
 CLI
 
 ```shell
-docker run -it --rm --name ops-php ops-php/php:cli-latest php --version
+docker run -it --rm --name ops-php ops-php/php:8.1-bullseye-cli php --version
 ```
 
 FPM
 
 ```shell
-docker run -it --rm --name ops-php -p 9001:9001 ops-php/php:fpm-latest
+docker run -it --rm --name ops-php -p 9001:9001 ops-php/php:8.1-bullseye-fpm
 ```
 
 @see http://localhost:9001
