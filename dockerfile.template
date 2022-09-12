@@ -91,6 +91,8 @@ chmod +x /usr/bin/php*
 RUN set -eux; \
 echo "docker-entrypoint-php.sh" >> /docker-entrypoint.list
 
+WORKDIR /var/www
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 STOPSIGNAL SIGQUIT
