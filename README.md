@@ -18,7 +18,6 @@ Create your php templates in an automated way
     "version": "8.1"
   }
 }
-
 ```
 
 ### Usage
