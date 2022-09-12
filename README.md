@@ -20,6 +20,13 @@ Create your php templates in an automated way
 }
 ```
 
+### Requirements
+
+```shell
+# Install JQ
+sudo apt-get install jq
+```
+
 ### Usage
 
 Edit dockerfile.template
