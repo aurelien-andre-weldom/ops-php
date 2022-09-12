@@ -10,10 +10,10 @@ Create your php templates in an automated way
 {
   "8.1": {
     "variants": [
-      "bullseye/cli",
-      "bullseye/fpm",
-      "buster/cli",
-      "buster/fpm"
+      "bullseye-slim/cli",
+      "bullseye-slim/fpm",
+      "buster-slim/cli",
+      "buster-slim/fpm"
     ],
     "version": "8.1"
   }
