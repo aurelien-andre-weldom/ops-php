@@ -9,7 +9,7 @@ FROM ops-debian/debian:buster-slim
 
 ENV \
 PHP_VERSION="8.1" \
-PHP_SUITE="buster" \
+PHP_SUITE="buster-slim" \
 PHP_VARIANT="fpm"
 
 ENV \

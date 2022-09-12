@@ -5,11 +5,11 @@
 #
 # @see https://github.com/aurelien-andre-weldom/ops-php
 #
-FROM ops-debian/debian:bullseye-slim
+FROM ops-debian/debian:buster-slim
 
 ENV \
 PHP_VERSION="8.1" \
-PHP_SUITE="bullseye" \
+PHP_SUITE="buster-slim" \
 PHP_VARIANT="cli"
 
 

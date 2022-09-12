@@ -45,7 +45,7 @@ for version; do
 
     export suite variant
 
-    from="ops-debian/debian:$suite-slim"
+    from="ops-debian/debian:$suite"
 
     export from
 

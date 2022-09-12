@@ -64,13 +64,13 @@ FPM_PM_MAX_REQUESTS="500"
 CLI
 
 ```shell
-docker run -it --rm --name ops-php ops-php/php:8.1-bullseye-cli php --version
+docker run -it --rm --name ops-php ops-php/php:8.1-bullseye-slim-cli php --version
 ```
 
 FPM
 
 ```shell
-docker run -it --rm --name ops-php -p 9001:9001 ops-php/php:8.1-bullseye-fpm
+docker run -it --rm --name ops-php -p 9001:9001 ops-php/php:8.1-bullseye-slim-fpm
 ```
 
 @see 

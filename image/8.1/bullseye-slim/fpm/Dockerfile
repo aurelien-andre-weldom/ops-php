@@ -9,7 +9,7 @@ FROM ops-debian/debian:bullseye-slim
 
 ENV \
 PHP_VERSION="8.1" \
-PHP_SUITE="bullseye" \
+PHP_SUITE="bullseye-slim" \
 PHP_VARIANT="fpm"
 
 ENV \
