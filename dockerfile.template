@@ -7,8 +7,8 @@ PHP_VARIANT="{{ env.variant }}"
 
 {{ if env.variant == "fpm" then ( -}}
 ENV \
-FPM_PID="/var/pid/php{{ env.version }}-fpm.pid" \
-FPM_LISTENER="/var/run/php{{ env.version }}-fpm.sock" \
+FPM_PID="/var/pid/php-fpm.pid" \
+FPM_LISTENER="/var/run/php-fpm.sock" \
 FPM_INCLUDE="/etc/php/{{ env.version }}/fpm/pool.d/*.conf" \
 FPM_ERROR_LOG="/proc/self/fd/1" \
 FPM_PM="ondemand" \

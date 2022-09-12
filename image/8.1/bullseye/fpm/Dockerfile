@@ -13,8 +13,8 @@ PHP_SUITE="bullseye" \
 PHP_VARIANT="fpm"
 
 ENV \
-FPM_PID="/var/pid/php8.1-fpm.pid" \
-FPM_LISTENER="/var/run/php8.1-fpm.sock" \
+FPM_PID="/var/pid/php-fpm.pid" \
+FPM_LISTENER="/var/run/php-fpm.sock" \
 FPM_INCLUDE="/etc/php/8.1/fpm/pool.d/*.conf" \
 FPM_ERROR_LOG="/proc/self/fd/1" \
 FPM_PM="ondemand" \
